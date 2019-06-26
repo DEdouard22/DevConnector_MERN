@@ -1,8 +1,12 @@
 const express = require("express");
+const connectDB = require("./config/db");
 
 const app = express();
 
-//initial set up test
+//Connect Database
+connectDB();
+
+//initial set up test with local and Postman
 app.get("/", (req, res) => res.send("API Running"));
 
 const PORT = process.env.PORT || 5000;
