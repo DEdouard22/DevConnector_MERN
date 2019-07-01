@@ -6,6 +6,9 @@ const app = express();
 // Connect Database
 connectDB();
 
+//Init Middleware
+app.use(express.json({ extend: false }));
+
 // initial set up test with local and Postman
 app.get("/", (req, res) => res.send("API Running"));
 
