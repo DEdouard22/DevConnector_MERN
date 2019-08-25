@@ -56,9 +56,9 @@ router.post(
       });
 
       // Encript password
-      const salt = await bcrypt.genSalt(10);
-      user.password = await bcrypt.hash(password, salt);
-      await user.save();
+      const salt = await bcrypt.genSalt(10); //var used to encrypt 10 rounds
+      user.password = await bcrypt.hash(password, salt); // hash with salt
+      await user.save(); //save user to databse
 
       // Return jsonwebtoken
       //res.send("User registered");
@@ -71,7 +71,7 @@ router.post(
       jwt.sign(
         payload,
         config.get("jwtSecret"),
-        { expiresIn: 360000 },
+        { expiresIn: 3600000 },
         (err, token) => {
           if (err) throw err;
           res.json({ token });
